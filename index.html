@@ -71,93 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-蓝桥杯省赛复习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/05/12/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B%E5%A4%8D%E4%B9%A0/" class="article-date">
-  <time class="dt-published" datetime="2021-05-12T13:36:00.338Z" itemprop="datePublished">2021-05-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>17号就是蓝桥杯的省赛了      先不搞安卓跟力扣了  准备刷以前的省赛题库</strong></p>
-<p>第十届省赛JAVA b组</p>
-<p>试题C  数列求值</p>
-<p><img src="C:\Users\admin\Desktop\QQ截图20210414111809.png" alt="QQ截图20210414111809"></p>
-<pre><code>public static void main(String[] args) &#123;
-
-        int cnt = 4;
-
-        int a = 1 ;
-
-        int b = 1 ;
-
-        int c = 1 ;
-
-        while(cnt!=20190324) &#123;
-
-            if(cnt%3 == 0) &#123;
-
-                a = a + b + c;
-
-                a%=10000;
-
-            &#125;
-
-            if(cnt%3 == 1) &#123;
-
-                b = a + b + c;
-
-                b%=10000;
-
-            &#125;
-
-            if(cnt%3 == 2) &#123;
-
-                c = a + b + c;
-
-                c%=10000;
-
-            &#125;
-
-            cnt ++;
-
-        &#125;
-
-        System.out.println((a+b+c)%10000);
-
-        System.out.println(&quot;a = &quot;+a);
-
-&#125;
-</code></pre>
-<p>这种题用迭代   别傻傻的开数组了</p>
-<p>有道题用深搜BFS  以后再搞</p>
-<p>后缀表达式  要分很多种情况讨论  感觉大部分题还是有思路的  但是真不一定写得出来  害  </p>
-<p>转义字符!!!   我测试下</p>
-<p>s.split(“\\s+|\\.”);</p>
-<p>说实话  看不太懂   但是效果是把.跟左右的空白或者空白分隔开了</p>
-<p>s.split(“\\s+|\\2”);</p>
-<p>这样就把字符串“2”跟左右的空白分割开了  感觉可以记者这样用吧</p>
-<p>如果有多个空格要分隔开的可以用s.split(“\\s+”);正则表达式  之前没接触过</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/12/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B%E5%A4%8D%E4%B9%A0/" data-id="ckoligelb0003bcufcuf56tuv" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-状态空间法求解八段码问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/05/12/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B3%95%E6%B1%82%E8%A7%A3%E5%85%AB%E6%AE%B5%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
@@ -200,36 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/12/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B3%95%E6%B1%82%E8%A7%A3%E5%85%AB%E6%AE%B5%E7%A0%81%E9%97%AE%E9%A2%98/" data-id="ckoligel90001bcufeilj9vrk" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-农名帮数据库表图" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/14/%E5%86%9C%E5%90%8D%E5%B8%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%9B%BE/" class="article-date">
-  <time class="dt-published" datetime="2021-04-14T15:20:25.096Z" itemprop="datePublished">2021-04-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用亿图画的一个数据库   感觉还行  就是数据库的表有点少<img src="C:\Users\admin\Desktop\微信截图_20210414193448.png" alt="微信截图_20210414193448"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/14/%E5%86%9C%E5%90%8D%E5%B8%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%9B%BE/" data-id="ckoligel20000bcufc2dk0ub3" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/05/12/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B3%95%E6%B1%82%E8%A7%A3%E5%85%AB%E6%AE%B5%E7%A0%81%E9%97%AE%E9%A2%98/" data-id="ckq8ya9gy0001hsuffyekg5v0" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -260,11 +144,11 @@
 <p>可以用动态规划但是感觉没必要   </p>
 <p>如果一个子串是回文串  那如果这个子串两边的字符相等  就可以扩展两位  长度+2</p>
 <p>从i = 0 开始遍历    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    	<span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> right = <span class="number">0</span>; <span class="keyword">int</span> left = <span class="number">0</span>;String s1 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; s.length() ; i ++) &#123;</span><br><span class="line"></span><br><span class="line">        	<span class="keyword">int</span> len1 = roundSpend(s,i,i);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(i!=s.length()-<span class="number">1</span>&amp;&amp;s.charAt(i) == s.charAt(i+<span class="number">1</span>)  )</span><br><span class="line"></span><br><span class="line">        	    len2 = roundSpend(s,i,i+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        	<span class="keyword">if</span>(len1 &gt; right - left +<span class="number">1</span>&amp;&amp;len1 &gt;= len2 ) &#123;</span><br><span class="line"></span><br><span class="line">        		left = i-len1/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        		right = i+len1/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">    	<span class="keyword">else</span> <span class="keyword">if</span>(len2 &gt; right - left +<span class="number">1</span>&amp;&amp;len1 &lt; len2 )&#123;</span><br><span class="line">    		left = i-len2/<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">    		right = i +len2/<span class="number">2</span>;</span><br><span class="line">            System.out.println(<span class="string">&quot;Current i =&quot;</span> + i);</span><br><span class="line">    	&#125;</span><br><span class="line">    	s1 = s.substring(left,right+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> s1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">roundSpend</span><span class="params">(String s , <span class="keyword">int</span> left , <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(left&gt;=<span class="number">0</span>&amp;&amp;right&lt;s.length()&amp;&amp;s.charAt(left) == s.charAt(right)) &#123;</span><br><span class="line">		left--;</span><br><span class="line">		right++;</span><br><span class="line">        <span class="keyword">if</span>(left&lt;<span class="number">0</span> || right == s.length())&#123;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(left) != s.charAt(right))&#123;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> right-left+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> right = <span class="number">0</span>; <span class="keyword">int</span> left = <span class="number">0</span>;String s1 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; s.length() ; i ++) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len1 = roundSpend(s,i,i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i!=s.length()-<span class="number">1</span>&amp;&amp;s.charAt(i) == s.charAt(i+<span class="number">1</span>)  )</span><br><span class="line"></span><br><span class="line">        	len2 = roundSpend(s,i,i+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        	<span class="keyword">if</span>(len1 &gt; right - left +<span class="number">1</span>&amp;&amp;len1 &gt;= len2 ) &#123;</span><br><span class="line"></span><br><span class="line">        		left = i-len1/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        		right = i+len1/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">    	<span class="keyword">else</span> <span class="keyword">if</span>(len2 &gt; right - left +<span class="number">1</span>&amp;&amp;len1 &lt; len2 )&#123;</span><br><span class="line">    		left = i-len2/<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">    		right = i +len2/<span class="number">2</span>;</span><br><span class="line">             System.out.println(<span class="string">&quot;Current i =&quot;</span> + i);</span><br><span class="line">    	&#125;</span><br><span class="line">    	s1 = s.substring(left,right+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> s1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">roundSpend</span><span class="params">(String s , <span class="keyword">int</span> left , <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(left&gt;=<span class="number">0</span>&amp;&amp;right&lt;s.length()&amp;&amp;s.charAt(left) == s.charAt(right)) &#123;</span><br><span class="line">		left--;</span><br><span class="line">		right++;</span><br><span class="line">        <span class="keyword">if</span>(left&lt;<span class="number">0</span> || right == s.length())&#123;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(left) != s.charAt(right))&#123;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> right-left+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/12/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E4%B8%AD%E5%BF%83%E6%8B%93%E5%B1%95/" data-id="ckoligela0002bcufbtkl6uns" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/12/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E4%B8%AD%E5%BF%83%E6%8B%93%E5%B1%95/" data-id="ckq8ya9gk0000hsufejx31ay7" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -307,15 +191,7 @@
       <ul>
         
           <li>
-            <a href="/2021/05/12/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B%E5%A4%8D%E4%B9%A0/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2021/05/12/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B3%95%E6%B1%82%E8%A7%A3%E5%85%AB%E6%AE%B5%E7%A0%81%E9%97%AE%E9%A2%98/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/14/%E5%86%9C%E5%90%8D%E5%B8%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%9B%BE/">(no title)</a>
           </li>
         
           <li>
