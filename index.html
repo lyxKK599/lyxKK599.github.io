@@ -126,7 +126,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -156,6 +156,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="刘宇轩">
+      <meta itemprop="description" content="一个记录学习的网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/" class="post-title-link" itemprop="url">安卓学习笔记之MVP架构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-24 15:41:09 / Modified: 15:51:23" itemprop="dateCreated datePublished" datetime="2021-06-24T15:41:09+08:00">2021-06-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="一-Google官方MVP-Sample代码解读"><a href="#一-Google官方MVP-Sample代码解读" class="headerlink" title="一.Google官方MVP Sample代码解读"></a>一.Google官方MVP Sample代码解读</h3><p>关于Android程序的构架, 当前最流行的模式即为MVP模式, Google官方提供了Sample代码来展示这种模式的用法.<br>Repo地址: <a target="_blank" rel="noopener" href="https://github.com/android/architecture-samples">https://github.com/android/architecture-samples</a><br>本文为阅读官方sample代码的阅读笔记和分析.</p>
+<p>官方Android Architecture Blueprints [beta]:<br>Android在如何组织和构架一个app方面提供了很大的灵活性, 但是同时这种自由也可能会导致app在测试, 维护, 扩展方面变得困难.</p>
+<p>Android Architecture Blueprints展示了可能的解决方案. 在这个项目里, 我们用各种不同的构架概念和工具实现了同一个应用(To Do App). 主要的关注点在于代码结构, 构架, 测试和维护性.<br>但是请记住, 用这些模式构架app的方式有很多种, 要根据你的需要, 不要把这些当做绝对的典范.</p>
+<h3 id="二-安卓MVP插件：MVPHelper-可以一键生成MVP架构"><a href="#二-安卓MVP插件：MVPHelper-可以一键生成MVP架构" class="headerlink" title="二.安卓MVP插件：MVPHelper   可以一键生成MVP架构"></a>二.安卓MVP插件：MVPHelper   可以一键生成MVP架构</h3><p><img src="/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO\source_posts\安卓学习笔记之MVP架构-1\MVPHelper.png" alt="MVPHelper"></p>
+<h3 id="三-MVP模式-概念"><a href="#三-MVP模式-概念" class="headerlink" title="三.MVP模式 概念"></a>三.MVP模式 概念</h3><p>之前有一个MVC模式: Model-View-Controller.<br>MVC模式 有两个主要的缺点: 首先, View持有Controller和Model的引用; 第二, 它没有把对UI逻辑的操作限制在单一的类里, 这个职能被Controller和View或者Model共享.<br>所以后来提出了MVP模式来克服这些缺点.</p>
+<p>MVP(Model-View-Presenter)模式:</p>
+<p>Model: 数据层. 负责与网络层和数据库层的逻辑交互.<br>View: UI层. 显示数据, 并向Presenter报告用户行为.<br>Presenter: 从Model拿数据, 应用到UI层, 管理UI的状态, 决定要显示什么, 响应用户的行为.<br>MVP模式的最主要优势就是耦合降低, Presenter变为纯Java的代码逻辑, 不再与Android Framework中的类如Activity, Fragment等关联, 便于写单元测试.</p>
+<p><img src="/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO\source_posts\安卓学习笔记之MVP架构-1\QQ截图20210624154604.png" alt="MVPHelper"></p>
+<p>MVP跟MVC很相像，我上篇文章列出了很多种MVC的设计图，所以根据MVC的发展来看，我们把MVP当成MVC来看也不为过，因为MVP也是三层，唯一的差别是Model和View之间不进行通讯，都是通过Presenter完成， Presenter主要作为View和model交互的一个纽带 扮演 “主持交互”的角色。处理交互逻辑。<br>前面介绍MVC的时候提到了算是致命缺点吧，在android中由于activity（god object）的存在，Controller和View很难做到完全解耦。但在MVP中就可以很好的解决这个问题 。</p>
+<p>大家看这个图 也许不是很清楚或者说不是太理解。</p>
+<p>在这里 “View” 由presenter中的接口担任 实现向View实现类通信，你也可以在Android组件中实现它。有时最好直接使用Activity，Fragment或自定义View。</p>
+<p>先说Model: 它是一个负责管理数据的接口。模型的职责包括使用API、缓存数据、管理数据库等。该模型也可以是一个接口，与其他模块负责这些职责的沟通。例如，如果您使用的是存储库模式，则该模型可能是一个存储库。如果您使用的是干净的建筑，相反，该模型可以关联。（翻译过来略显生硬 简而言之 Model层是数据访问层，如数据库API或远程服务器API）</p>
+<p>Presenter:大家可以看到Model和View是完全没有交互的。那么 Presenter则担当Model与View之间的中间人。你所有的业务逻辑都属于它。Presenter负责查询模型和更新视图，响应用户交互更新模型。</p>
+<h3 id="四-一个MVP架构的Demo"><a href="#四-一个MVP架构的Demo" class="headerlink" title="四.一个MVP架构的Demo"></a>四.一个MVP架构的Demo</h3><p><a target="_blank" rel="noopener" href="https://github.com/lyxKK599/MVPDemo">https://github.com/lyxKK599/MVPDemo</a></p>
+<p>不过还没有过大一点的项目的实战经历 。。。 慢慢学吧</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

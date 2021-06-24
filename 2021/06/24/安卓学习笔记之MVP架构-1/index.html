@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="一.Google官方MVP Sample代码解读关于Android程序的构架, 当前最流行的模式即为MVP模式, Google官方提供了Sample代码来展示这种模式的用法.Repo地址: https:&#x2F;&#x2F;github.com&#x2F;android&#x2F;architecture-samples本文为阅读官方sample代码的阅读笔记和分析. 官方Android Architecture Blueprints">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓学习笔记之MVP架构">
+<meta property="og:url" content="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/index.html">
+<meta property="og:site_name" content="yx的个人博客">
+<meta property="og:description" content="一.Google官方MVP Sample代码解读关于Android程序的构架, 当前最流行的模式即为MVP模式, Google官方提供了Sample代码来展示这种模式的用法.Repo地址: https:&#x2F;&#x2F;github.com&#x2F;android&#x2F;architecture-samples本文为阅读官方sample代码的阅读笔记和分析. 官方Android Architecture Blueprints">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO/source_posts/安卓学习笔记之MVP架构-1/MVPHelper.png">
+<meta property="og:image" content="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO/source_posts/安卓学习笔记之MVP架构-1/QQ截图20210624154604.png">
+<meta property="article:published_time" content="2021-06-24T07:41:09.000Z">
+<meta property="article:modified_time" content="2021-06-24T07:51:23.495Z">
+<meta property="article:author" content="刘宇轩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO/source_posts/安卓学习笔记之MVP架构-1/MVPHelper.png">
+
+
+<link rel="canonical" href="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/","path":"2021/06/24/安卓学习笔记之MVP架构-1/","title":"安卓学习笔记之MVP架构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安卓学习笔记之MVP架构 | yx的个人博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">yx的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-yourdiy"><a href="/yourdiy" rel="section">Yourdiy</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-Google%E5%AE%98%E6%96%B9MVP-Sample%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">一.Google官方MVP Sample代码解读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E5%AE%89%E5%8D%93MVP%E6%8F%92%E4%BB%B6%EF%BC%9AMVPHelper-%E5%8F%AF%E4%BB%A5%E4%B8%80%E9%94%AE%E7%94%9F%E6%88%90MVP%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">二.安卓MVP插件：MVPHelper   可以一键生成MVP架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-MVP%E6%A8%A1%E5%BC%8F-%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">三.MVP模式 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B-%E4%B8%80%E4%B8%AAMVP%E6%9E%B6%E6%9E%84%E7%9A%84Demo"><span class="nav-number">4.</span> <span class="nav-text">四.一个MVP架构的Demo</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">刘宇轩</p>
+  <div class="site-description" itemprop="description">一个记录学习的网站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="刘宇轩">
+      <meta itemprop="description" content="一个记录学习的网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安卓学习笔记之MVP架构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-24 15:41:09 / Modified: 15:51:23" itemprop="dateCreated datePublished" datetime="2021-06-24T15:41:09+08:00">2021-06-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="一-Google官方MVP-Sample代码解读"><a href="#一-Google官方MVP-Sample代码解读" class="headerlink" title="一.Google官方MVP Sample代码解读"></a>一.Google官方MVP Sample代码解读</h3><p>关于Android程序的构架, 当前最流行的模式即为MVP模式, Google官方提供了Sample代码来展示这种模式的用法.<br>Repo地址: <a target="_blank" rel="noopener" href="https://github.com/android/architecture-samples">https://github.com/android/architecture-samples</a><br>本文为阅读官方sample代码的阅读笔记和分析.</p>
+<p>官方Android Architecture Blueprints [beta]:<br>Android在如何组织和构架一个app方面提供了很大的灵活性, 但是同时这种自由也可能会导致app在测试, 维护, 扩展方面变得困难.</p>
+<p>Android Architecture Blueprints展示了可能的解决方案. 在这个项目里, 我们用各种不同的构架概念和工具实现了同一个应用(To Do App). 主要的关注点在于代码结构, 构架, 测试和维护性.<br>但是请记住, 用这些模式构架app的方式有很多种, 要根据你的需要, 不要把这些当做绝对的典范.</p>
+<h3 id="二-安卓MVP插件：MVPHelper-可以一键生成MVP架构"><a href="#二-安卓MVP插件：MVPHelper-可以一键生成MVP架构" class="headerlink" title="二.安卓MVP插件：MVPHelper   可以一键生成MVP架构"></a>二.安卓MVP插件：MVPHelper   可以一键生成MVP架构</h3><p><img src="/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO\source_posts\安卓学习笔记之MVP架构-1\MVPHelper.png" alt="MVPHelper"></p>
+<h3 id="三-MVP模式-概念"><a href="#三-MVP模式-概念" class="headerlink" title="三.MVP模式 概念"></a>三.MVP模式 概念</h3><p>之前有一个MVC模式: Model-View-Controller.<br>MVC模式 有两个主要的缺点: 首先, View持有Controller和Model的引用; 第二, 它没有把对UI逻辑的操作限制在单一的类里, 这个职能被Controller和View或者Model共享.<br>所以后来提出了MVP模式来克服这些缺点.</p>
+<p>MVP(Model-View-Presenter)模式:</p>
+<p>Model: 数据层. 负责与网络层和数据库层的逻辑交互.<br>View: UI层. 显示数据, 并向Presenter报告用户行为.<br>Presenter: 从Model拿数据, 应用到UI层, 管理UI的状态, 决定要显示什么, 响应用户的行为.<br>MVP模式的最主要优势就是耦合降低, Presenter变为纯Java的代码逻辑, 不再与Android Framework中的类如Activity, Fragment等关联, 便于写单元测试.</p>
+<p><img src="/2021/06/24/%E5%AE%89%E5%8D%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BMVP%E6%9E%B6%E6%9E%84-1/HEXO\source_posts\安卓学习笔记之MVP架构-1\QQ截图20210624154604.png" alt="MVPHelper"></p>
+<p>MVP跟MVC很相像，我上篇文章列出了很多种MVC的设计图，所以根据MVC的发展来看，我们把MVP当成MVC来看也不为过，因为MVP也是三层，唯一的差别是Model和View之间不进行通讯，都是通过Presenter完成， Presenter主要作为View和model交互的一个纽带 扮演 “主持交互”的角色。处理交互逻辑。<br>前面介绍MVC的时候提到了算是致命缺点吧，在android中由于activity（god object）的存在，Controller和View很难做到完全解耦。但在MVP中就可以很好的解决这个问题 。</p>
+<p>大家看这个图 也许不是很清楚或者说不是太理解。</p>
+<p>在这里 “View” 由presenter中的接口担任 实现向View实现类通信，你也可以在Android组件中实现它。有时最好直接使用Activity，Fragment或自定义View。</p>
+<p>先说Model: 它是一个负责管理数据的接口。模型的职责包括使用API、缓存数据、管理数据库等。该模型也可以是一个接口，与其他模块负责这些职责的沟通。例如，如果您使用的是存储库模式，则该模型可能是一个存储库。如果您使用的是干净的建筑，相反，该模型可以关联。（翻译过来略显生硬 简而言之 Model层是数据访问层，如数据库API或远程服务器API）</p>
+<p>Presenter:大家可以看到Model和View是完全没有交互的。那么 Presenter则担当Model与View之间的中间人。你所有的业务逻辑都属于它。Presenter负责查询模型和更新视图，响应用户交互更新模型。</p>
+<h3 id="四-一个MVP架构的Demo"><a href="#四-一个MVP架构的Demo" class="headerlink" title="四.一个MVP架构的Demo"></a>四.一个MVP架构的Demo</h3><p><a target="_blank" rel="noopener" href="https://github.com/lyxKK599/MVPDemo">https://github.com/lyxKK599/MVPDemo</a></p>
+<p>不过还没有过大一点的项目的实战经历 。。。 慢慢学吧</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/12/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B3%95%E6%B1%82%E8%A7%A3%E5%85%AB%E6%AE%B5%E7%A0%81%E9%97%AE%E9%A2%98/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘宇轩</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
